@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "279855077965",
+    "project_id": "todolist-motion-exercise",
+    "storage_bucket": "todolist-motion-exercise.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279855077965:android:28e2f6c58dcebce15ada04",
+        "android_client_info": {
+          "package_name": "com.example.todolist_motion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbgapLlgxcsBGds-MzKcc8gAZ7TzOhi18"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
