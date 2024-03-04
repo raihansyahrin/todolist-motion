@@ -1,5 +1,5 @@
 name: todolist_motion
-description: "A new Flutter project."
+description: 'A new Flutter project.'
 publish_to: 'none'
 version: 0.1.0
 
@@ -8,9 +8,12 @@ environment:
 
 dependencies:
   cloud_firestore: ^4.15.5
+  colorful_safe_area: ^1.0.0
   firebase_core: ^2.25.4
   flutter:
     sdk: flutter
+  provider: ^6.1.2
+  salomon_bottom_bar: ^3.3.2
 
 dev_dependencies:
   flutter_test:
@@ -19,3 +22,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
