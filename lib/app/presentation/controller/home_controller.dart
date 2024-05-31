@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:todolist_motion/app/data/models/todos_model.dart';
+import 'package:todolist_motion/app/utils/logging.dart';
+import '../../data/models/todos_model.dart';
 
 class HomeController {
   final TextEditingController textEditingController = TextEditingController();
@@ -15,13 +16,13 @@ class HomeController {
       FirebaseFirestore.instance.collection('todolist').add({
         'title': todoTitle,
         'status': false,
-        'starred': false, // status default unchecked
+        'starred': false,
         'created_at': DateTime.now(),
       }).then((_) {
         // Bersihkan bidang teks setelah menambahkan todo
         textEditingController.clear();
       }).catchError((error) {
-        print("Gagal menambahkan todo: $error");
+        log.e("Gagal menambahkan todo: $error");
       });
     }
   }
@@ -33,9 +34,9 @@ class HomeController {
         .doc(id)
         .delete()
         .then((_) {
-      print("Todo dengan id: $id berhasil dihapus");
+      log.i("Todo dengan id: $id berhasil dihapus");
     }).catchError((error) {
-      print("Gagal menghapus todo: $error");
+      log.e("Gagal menghapus todo: $error");
     });
   }
 
@@ -44,9 +45,9 @@ class HomeController {
     FirebaseFirestore.instance.collection('todolist').doc(id).update({
       'status': !status, // Toggle status
     }).then((_) {
-      print("Todo dengan id: $id berhasil diperbarui");
+      log.i("Todo dengan id: $id berhasil diperbarui");
     }).catchError((error) {
-      print("Gagal memperbarui todo: $error");
+      log.e("Gagal memperbarui todo: $error");
     });
   }
 
@@ -55,9 +56,9 @@ class HomeController {
         .collection('todolist')
         .doc(id)
         .update({'title': newTitle}).then((_) {
-      print("Todo dengan id: $id berhasil diubah");
+      log.i("Todo dengan id: $id berhasil diubah");
     }).catchError((error) {
-      print("Gagal mengubah todo: $error");
+      log.e("Gagal mengubah todo: $error");
     });
   }
 
@@ -65,7 +66,7 @@ class HomeController {
     FirebaseFirestore.instance.collection('todolist').doc(id).update({
       'starred': !starred, // Toggle status
     }).then((_) {
-      print("Stared dengan id: $id berhasil diperbarui");
+      log.i("Stared dengan id: $id berhasil diperbarui");
 
       if (!starred) {
         FirebaseFirestore.instance
@@ -84,7 +85,7 @@ class HomeController {
         _starred.removeWhere((todo) => todo.id == id);
       }
     }).catchError((error) {
-      print("Gagal memperbarui Starred: $error");
+      log.e("Gagal memperbarui Starred: $error");
     });
   }
 
