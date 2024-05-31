@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:todolist_motion/app/data/models/todos_model.dart';
-import 'package:todolist_motion/app/presentation/widget/todo_item_widget.dart';
-import 'package:todolist_motion/app/presentation/controller/home_controller.dart';
+import '../../data/models/todos_model.dart';
+import '../widget/todo_item_widget.dart';
+import '../controller/home_controller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
-                      child: CircularProgressIndicator(),
+                      child: CircularProgressIndicator.adaptive(),
                     );
                   } else if (snapshot.hasError) {
                     return Center(
