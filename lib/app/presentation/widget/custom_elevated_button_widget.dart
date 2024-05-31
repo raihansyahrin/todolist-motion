@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todolist_motion/app/presentation/widget/custom_build_text_widget.dart';
+import 'custom_build_text_widget.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final VoidCallback onPressed;

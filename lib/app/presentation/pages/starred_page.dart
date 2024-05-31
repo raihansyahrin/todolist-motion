@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:todolist_motion/app/data/models/todos_model.dart';
-import 'package:todolist_motion/app/presentation/controller/home_controller.dart';
-import 'package:todolist_motion/app/presentation/widget/todo_item_widget.dart';
+import '../../data/models/todos_model.dart';
+import '../controller/home_controller.dart';
+import '../widget/todo_item_widget.dart';
 
 class StarredPage extends StatelessWidget {
   const StarredPage({super.key});
@@ -83,6 +82,7 @@ class StarredPage extends StatelessWidget {
                       );
                     } else {
                       return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
                             'assets/images/empty.png',

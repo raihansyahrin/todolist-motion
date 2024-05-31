@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'package:todolist_motion/app/presentation/controller/home_controller.dart';
-import 'package:todolist_motion/app/presentation/pages/home_page.dart';
-import 'package:todolist_motion/app/presentation/pages/starred_page.dart';
-import 'package:todolist_motion/app/presentation/widget/custom_elevated_button_widget.dart';
-import 'package:todolist_motion/app/presentation/widget/custom_text_field_widget.dart';
+import 'app/presentation/controller/home_controller.dart';
+import 'app/presentation/pages/home_page.dart';
+import 'app/presentation/pages/starred_page.dart';
+import 'app/presentation/widget/custom_elevated_button_widget.dart';
+import 'app/presentation/widget/custom_text_field_widget.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -73,37 +73,43 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 top: Radius.circular(20),
               ),
             ),
+            isScrollControlled: true,
             builder: (context) {
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      basicTextField('Add New Task',
+              return Padding(
+                padding: MediaQuery.of(context).viewInsets,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        basicTextField(
+                          'Add New Task',
                           controller: controller.textEditingController,
-                          hintText: 'New Task'),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          CustomElevatedButton(
-                            onPressed: () {
-                              controller.handleCreateTodo();
-                              Navigator.pop(context);
-                            },
-                            text: 'Save',
-                            textColor: Colors.black,
-                            backgroundColor: Colors.greenAccent,
-                            borderSide: const BorderSide(
-                              color: Colors.greenAccent,
+                          hintText: 'New Task',
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            CustomElevatedButton(
+                              onPressed: () {
+                                controller.handleCreateTodo();
+                                Navigator.pop(context);
+                              },
+                              text: 'Save',
+                              textColor: Colors.black,
+                              backgroundColor: Colors.greenAccent,
+                              borderSide: const BorderSide(
+                                color: Colors.greenAccent,
+                              ),
+                              minWidth: 0,
+                              minHeight: 30,
                             ),
-                            minWidth: 0,
-                            minHeight: 30,
-                          ),
-                        ],
-                      )
-                    ],
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -114,8 +120,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         backgroundColor: Colors.greenAccent,
-        selectedItemColor: const Color.fromARGB(255, 81, 60, 60),
-        unselectedItemColor: const Color.fromARGB(255, 47, 86, 33),
+        selectedItemColor: Colors.white,
+        unselectedItemColor:
+            const Color.fromARGB(255, 57, 66, 62).withOpacity(0.8),
         onTap: (index) {
           setState(() {
             _currentIndex = index;
